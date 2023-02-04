@@ -1,5 +1,6 @@
 import io from 'socket.io-client';
 
+// eslint-disable-next-line
 const socket = io.connect("http://localhost:3001")
 
 function ChatWindow() {
