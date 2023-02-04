@@ -4,6 +4,8 @@ import ChatWindow from './components/chatWindow';
 function App() {
   return (
     <div className="appBackground">
+      
+      
       <ChatWindow /> 
     </div>
   );
