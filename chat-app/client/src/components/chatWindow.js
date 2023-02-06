@@ -10,12 +10,12 @@ function ChatWindow() {
     };
 
     return(
-        <div > <h1 className='header'>Chat</h1>
-            <div className='chatContainer'>
+        <div > <h1>Chat</h1>
+            <div>
                 {/* Chat messages go here. */}
             </div>
-            <div className='chatInputContainer'>
-                <form className='chatInput' onSubmit={handleSubmit}>
+            <div>
+                <form onSubmit={handleSubmit}>
                     <input type='text' placeholder='Enter your message'/>  
                     <input type='submit' value='Send'/>
                 </form>

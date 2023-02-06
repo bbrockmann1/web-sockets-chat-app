@@ -1,14 +1,9 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom'
-import ChatroomList from './components/chatroomList';
-import ChatWindow from './components/chatWindow';
-import UsernameChatroom from './components/usernameChatroom';
-import Header from './components/header';
-import Footer from './components/footer';
 
 function App() {
   return (
-    <div className="appBackground">
+    <>
       <Header />
 
         <Routes> 
@@ -18,7 +13,7 @@ function App() {
         </Routes>
 
       <Footer /> 
-    </div>
+    </>
   );
 }
 
