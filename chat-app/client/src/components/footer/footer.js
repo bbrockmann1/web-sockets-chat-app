@@ -1,10 +1,12 @@
-function Footer() {
+import './footer.css';
 
-    return(
-        <div > 
-            <h1>Footer</h1>
-        </div>
-    );
-};
+function Footer() {
+  return (
+    <div className="footer">
+      <p>Copyright © 2023 Chatter</p>
+    </div>
+  );
+}
 
 export default Footer;
+
