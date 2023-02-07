@@ -25,5 +25,3 @@ function App() {
 }
 
 export default App;
-
-//make chatroomlist a child of chatWindow and usernameChatroom components 
