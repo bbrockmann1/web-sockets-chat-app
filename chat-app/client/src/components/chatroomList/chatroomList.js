@@ -2,7 +2,7 @@ function ChatroomList() {
 
     return(
         <div > 
-            <h1>ChatroomList</h1>
+            <h1 className="title">Available Chatrooms</h1>
         </div>
     );
 };
