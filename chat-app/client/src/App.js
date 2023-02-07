@@ -8,11 +8,12 @@ import UsernameChatroom from './components/usernameChatroom/index';
 
 function App() {
   return (
-    <div>
+    <div className='background'>
       <Header />
       <ChatroomList />
 
         <Routes> 
+          
           <Route path='/' element={ <UsernameChatroom /> } /> 
           <Route path='/chat' element={ <ChatWindow /> } />
           
