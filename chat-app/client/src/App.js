@@ -10,11 +10,12 @@ function App() {
   return (
     <div>
       <Header />
+      <ChatroomList />
 
         <Routes> 
-          <Route path='/' element={ <UsernameChatroom /> } />
-          <Route path='/list' element={ <ChatroomList /> } /> 
-          <Route path='/window' element={ <ChatWindow /> } />
+          <Route path='/' element={ <UsernameChatroom /> } /> 
+          <Route path='/chat' element={ <ChatWindow /> } />
+          
         </Routes>
 
       <Footer /> 
