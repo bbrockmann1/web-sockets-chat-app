@@ -13,15 +13,15 @@ function ChatWindow() {
     return(
         <div className='container-all'>
             <div > <h1 className='chat-header'>Chat</h1>
-                <div className='chatContainer'>
+                <div className='chat-container'>
                     {/* Chat messages go here. */}
                 </div>
-                <div className='chatInputContainer'>
-                    <form className='chatInput' onSubmit={handleSubmit}>
-                        <input type='text' placeholder='Enter your message'/>  
-                        <input type='submit' value='Send'/>
-                    </form>
-                </div>
+                    <div className='form-container'>
+                        <form className='chatInput' onSubmit={handleSubmit}>
+                            <input type='text' placeholder='Enter your message' className='input'/>  
+                            <input type='submit' value='Send' className='button'/>
+                        </form>
+                    </div>    
             </div>
         </div>    
     );

@@ -1,6 +1,40 @@
 .container-all {
     display: flex;
-    border: solid;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
     width: 50%;
-    
+    height: 750px;
+    border: solid;
+    margin-top: 10px;
+}
+
+.chat-header {
+    text-align: center;
+}
+
+.chat-container {
+    width: 400px;
+    height: 500px;    
+    border: solid;
+    box-sizing: border-box;
+    margin: -20px;
+}
+
+.form-container {
+    position: relative;
+    border: solid;
+    display: flex;
+    margin-top: 30px;
+    height: 100px;
+}
+
+.input {
+    display: flex;
+    width: 350px;
+    height: 6.9vh;
+}
+
+.button {
+    width: 100%;
 }
