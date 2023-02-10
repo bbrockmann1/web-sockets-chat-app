@@ -1,3 +1,4 @@
+import './chatWindow.css';
 import io from 'socket.io-client';
 
 // eslint-disable-next-line
