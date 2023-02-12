@@ -1,16 +1,17 @@
-import { useState } from 'react';
-import { Socket } from 'socket.io-client';
 import './usernameChatroom.css';
+import { usernameState, roomState } from '../../atoms';
+import { useRecoilState } from 'recoil';
+import socket from '../../socket';
 
 function UsernameChatroom() {
-    const [username, setUsername] = useState('');
-    const [room, setRoom] = useState('');
+    const [username, setUsername] = useRecoilState(usernameState);
+    const [room, setRoom] = useRecoilState(roomState);
 
     function joinRoom(e) {
         e.preventDefault();
         if (username !== "" && room !== "") {
-            Socket.emit("join_room", room)
-        };
+            socket.emit("join_room", room);
+        };        
     };
 
     return(

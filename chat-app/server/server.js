@@ -19,7 +19,7 @@ io.on("connection", (socket) => {
 
     socket.on("join_room", (room) => {
         socket.join(room);
-        console.log(`${socket.id} has created ${room}`)
+        console.log(`${socket.id} has created room: ${room}`)
     });
 
     socket.on("disconnect", () => {
