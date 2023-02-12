@@ -16,10 +16,12 @@ function ChatWindow() {
                 room: room,
                 author: username,
                 message: currentMessage,
-                time: 
+                date_time: 
                     new Date(Date.now()).getHours() + 
                     ':' + 
-                    new Date(Date.now()).getMinutes() 
+                    new Date(Date.now()).getMinutes() +
+                    ' on ' +
+                    new Date().toLocaleDateString('en-US')
             };
 
             await socket.emit("send_message", messageData);
