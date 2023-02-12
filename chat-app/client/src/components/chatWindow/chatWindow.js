@@ -2,6 +2,7 @@ import './chatWindow.css';
 import socket from '../../socket';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {  currentMessageState, usernameState, roomState} from '../../atoms';
+import { useEffect } from 'react';
 
 function ChatWindow() {
     const [currentMessage, setCurrentMessage] = useRecoilState(currentMessageState);
@@ -28,6 +29,12 @@ function ChatWindow() {
         };
         setCurrentMessage('');
     };
+
+    useEffect(() => {
+        socket.on('receive_message', (data) => {
+            console.log(data);
+        })
+    }, [socket])
 
     return(
         <div className='container-all'>
