@@ -5,6 +5,10 @@ import ChatWindow from './components/chatWindow/index';
 import Footer from './components/footer/index'
 import Header from './components/header/index'
 import UsernameChatroom from './components/usernameChatroom/index';
+import io from 'socket.io-client';
+
+// eslint-disable-next-line
+const socket = io.connect("http://localhost:3001");
 
 function App() {
   return (

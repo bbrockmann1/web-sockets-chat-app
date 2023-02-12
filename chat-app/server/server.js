@@ -17,9 +17,14 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
     console.log(`User connected: ${socket.id}`);
 
+    socket.on("join_room", (room) => {
+        socket.join(room);
+        console.log(`${socket.id} has created ${room}`)
+    });
+
     socket.on("disconnect", () => {
         console.log(`${socket.id} has disconnected.`)
-    })
+    });
 })
 
 server.listen(3001, () => {

@@ -1,9 +1,17 @@
 import { useState } from 'react';
+import { Socket } from 'socket.io-client';
 import './usernameChatroom.css';
 
 function UsernameChatroom() {
     const [username, setUsername] = useState('');
     const [room, setRoom] = useState('');
+
+    function joinRoom(e) {
+        e.preventDefault();
+        if (username !== "" && room !== "") {
+            Socket.emit("join_room", room)
+        };
+    };
 
     return(
         <div className='container'> 
@@ -20,7 +28,7 @@ function UsernameChatroom() {
                         value={room}
                         onChange={e => setRoom(e.target.value)}
                     />
-                    <button type='submit'>Submit</button>
+                    <button onClick={joinRoom}>Submit</button>
                 </form>
             </div>
         </div>
