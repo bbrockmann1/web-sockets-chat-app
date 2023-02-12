@@ -22,6 +22,10 @@ io.on("connection", (socket) => {
         console.log(`${socket.id} has created room: ${room}`)
     });
 
+    socket.on("send_message", (data) => {
+        console.log(data);
+    })
+
     socket.on("disconnect", () => {
         console.log(`${socket.id} has disconnected.`)
     });
