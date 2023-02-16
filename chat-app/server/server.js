@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const http = require("http");
 const cors = require("cors");
-const { Server } = require("socket.io")
+const { Server } = require("socket.io");
 
 app.use(cors());
 
@@ -25,7 +25,6 @@ io.on("connection", (socket) => {
         socket.join(room);
         console.log(`${socket.id} has joined room: ${room}`);
 
-        // Add user to room
         if (!rooms[room]) {
             rooms[room] = {
                 users: new Set()
@@ -33,21 +32,19 @@ io.on("connection", (socket) => {
         }
         rooms[room].users.add(socket.id);
 
-        // Broadcast to all users in the room that a new user has joined
         socket.to(room).emit('user_joined', { room, user: socket.id });
 
-        // Broadcast updated list of rooms to all users
         io.emit('rooms', Object.keys(rooms));
         console.log(`New room created: ${room}`);
     });
 
     socket.on("send_message", (data) => {
-        socket.to(data.room).emit('receive_message', data)
+        socket.to(data.room).emit('receive_message', data);
         console.log(data);
     })
 
     socket.on("disconnect", () => {
-        console.log(`${socket.id} has disconnected.`)
+        console.log(`${socket.id} has disconnected.`);
 
         for (const room in rooms) {
             if (rooms[room].users.has(socket.id)) {
@@ -60,8 +57,8 @@ io.on("connection", (socket) => {
                     socket.to(room).emit('user_left', { room, user: socket.id });
                 }
                 break;
-            }
-        }
+            };
+        };
     });
 });
 
