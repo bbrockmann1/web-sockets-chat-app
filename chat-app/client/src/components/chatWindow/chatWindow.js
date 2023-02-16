@@ -34,7 +34,7 @@ function ChatWindow() {
         socket.on('receive_message', (data) => {
             console.log(data);
         })
-    }, [socket])
+    }, [])
 
     return(
         <div className='container-all'>

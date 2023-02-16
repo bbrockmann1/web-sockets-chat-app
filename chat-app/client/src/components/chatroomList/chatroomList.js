@@ -1,21 +1,39 @@
+import { useState, useEffect } from 'react';
 import './chatroomList.css';
-// eslint-disable-next-line
+import socket from '../../socket';
 import { roomState } from '../../atoms';
-// eslint-disable-next-line
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 function ChatroomList() {
-    // const room = useRecoilValue(roomState);
-    
-    // const roomList = room.map((item) => {
-    //     return `<span>${item}</span>`;
-    // })
+    const [rooms, setRooms] = useState([]);
+    // eslint-disable-next-line
+    const [room, setRoom] = useRecoilState(roomState);
 
-    return(
-        <div className='container'> 
+    useEffect(() => {
+    
+        socket.on("rooms", (data) => {
+            setRooms(data);
+        });
+
+        return () => {
+            socket.disconnect();
+        }
+    }, []);
+
+    return (
+        <div className='container'>
             <h1 className="title">Available Chatrooms</h1>
+            <h5>Click on an Available room to add to room name field</h5>
             <div className='list'>
-                
+                {rooms.map((room, index) => (
+                    <div 
+                        key={index} 
+                        className="room"
+                        onClick={() => setRoom(room)}
+                    >
+                        {room}
+                    </div>
+                ))}
             </div>
         </div>
     );

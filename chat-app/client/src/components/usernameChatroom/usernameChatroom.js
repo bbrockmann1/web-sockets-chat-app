@@ -7,7 +7,9 @@ import socket from '../../socket';
 function UsernameChatroom() {
     const [username, setUsername] = useRecoilState(usernameState);
     const [room, setRoom] = useRecoilState(roomState);
+    
     const navigate = useNavigate();
+    
 
     function joinRoom(e) {
         e.preventDefault();

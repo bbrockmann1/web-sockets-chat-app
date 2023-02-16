@@ -14,12 +14,22 @@ const io = new Server(server, {
     }
 });
 
+const rooms = {};
+
 io.on("connection", (socket) => {
     console.log(`User connected: ${socket.id}`);
+
+    socket.emit('rooms', Object.keys(rooms));
 
     socket.on("join_room", (room) => {
         socket.join(room);
         console.log(`${socket.id} has created room: ${room}`)
+
+        if (!rooms[room]) {
+            rooms[room] = true;
+            io.emit('rooms', Object.keys(rooms));
+            console.log(`New room created: ${room}`);
+        }
     });
 
     socket.on("send_message", (data) => {
