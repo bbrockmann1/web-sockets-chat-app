@@ -19,7 +19,7 @@ const rooms = {};
 io.on("connection", (socket) => {
     console.log(`User connected: ${socket.id}`);
 
-    socket.emit('rooms', Object.keys(rooms));
+    socket.emit('rooms', Object.keys(rooms)); 
 
     socket.on("join_room", (room) => {
         socket.join(room);
