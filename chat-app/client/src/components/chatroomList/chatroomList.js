@@ -23,7 +23,7 @@ function ChatroomList() {
     return (
         <div className='container'>
             <h1 className="title">Available Chatrooms</h1>
-            <h5>Click on an Available room to add to room name field</h5>
+            <h5>Click on an Available Room to add to Room Name Field</h5>
             <div className='list'>
                 {rooms.map((room, index) => (
                     <div 
@@ -40,3 +40,7 @@ function ChatroomList() {
 };
 
 export default ChatroomList;
+
+//fix chat list format and styling (scrollbar)
+//add when a user joins to the chatroom
+//add when a user leaves the chatroom

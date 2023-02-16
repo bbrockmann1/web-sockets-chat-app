@@ -2,10 +2,11 @@ import './chatWindow.css';
 import socket from '../../socket';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {  currentMessageState, usernameState, roomState} from '../../atoms';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function ChatWindow() {
     const [currentMessage, setCurrentMessage] = useRecoilState(currentMessageState);
+    const [messageList, setMessageList] = useState([]);
     const room = useRecoilValue(roomState);
     const username = useRecoilValue(usernameState);
 
@@ -26,21 +27,24 @@ function ChatWindow() {
             };
 
             await socket.emit("send_message", messageData);
+            setMessageList((list) => [...list, messageData]);
         };
         setCurrentMessage('');
     };
 
     useEffect(() => {
         socket.on('receive_message', (data) => {
-            console.log(data);
-        })
-    }, [])
+            setMessageList((list) => [...list, data]);
+        });
+    }, [setMessageList]);
 
     return(
         <div className='container-all'>
             <div > <h1 className='chat-header'>Chat</h1>
                 <div className='chat-container'>
-                    {/* Chat messages go here. */}
+                    {messageList.map((content, index) => {
+                        return <li key ={index} className='content'>{content.message}</li>
+                    })}
                 </div>
                     <div className='form-container'>
                         <form className='chatInput' onSubmit={handleSubmit}>
